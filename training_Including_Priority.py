@@ -621,7 +621,7 @@ def Test_process(State_file, TEST_SAVE_PATH, epsilon):
             f.writelines(lines)
             f.close()
             
-        Record_data(Path_1, RL_SAVE_PATH +'/RL_Path_1.json')
+        Record_data(Path_1, RL_SAVE_PATH +'/TEST_Path.json')
         Show_Path(Path_1, result, time, RL_SAVE_PATH, [agent2.gx,agent2.gy,agent2.gth])
         
         Path_1.clear()
