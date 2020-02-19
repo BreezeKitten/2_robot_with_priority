@@ -240,8 +240,8 @@ def Choose_action(agent1, agent2, epsilon):
                     if action_value > action_value_max:
                         action_value_max = action_value
                         action_pair = [V_pred, W_pred]                    
-        V_pred = action_pair[0]
-        W_pred = action_pair[1]
+            V_pred = action_pair[0]
+            W_pred = action_pair[1]
         #print(action_value_max)
     return V_pred, W_pred
 
