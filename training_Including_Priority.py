@@ -24,10 +24,10 @@ resTH = PI/15
 Reward
 '''
 Arrived_reward = 1
-Time_out_penalty = -1
-Collision_high_penalty = -5
-Collision_low_penalty = -5
-Collision_equ_penalty = -5
+Time_out_penalty = -0.25
+Collision_high_penalty = -0.5
+Collision_low_penalty = -1
+Collision_equ_penalty = -0.75
 
 
 '''
@@ -62,7 +62,7 @@ x_upper_bound = 5       #unit:m
 x_lower_bound = -5      #unit:m
 y_upper_bound = 5       #unit:m
 y_lower_bound = -5      #unit:m
-TIME_OUT_FACTOR = 1.5
+TIME_OUT_FACTOR = 3
 
 
 agnet2_motion = 'Greedy'
@@ -667,7 +667,7 @@ if __name__ == '__main__':
     init = tf.global_variables_initializer()
     sess.run(init)       
     saver.restore(sess, Network_path+Network_file_name)
-    
+
     #For RL
     LAST_SAVE_PATH = 0
     for i in range(10):
@@ -708,7 +708,7 @@ if __name__ == '__main__':
         
     RL_process(300, 0, TEST_SAVE_PATH)
 
-    
+    '''
     # for DL_init
     NOW =  datetime.datetime.now().strftime('%Y%m%d-%H%M%S') + '_DL_init'
     FM = file_manger.file_manger(Log_path,NOW)
@@ -721,5 +721,5 @@ if __name__ == '__main__':
 
     DL_process(DL_database)
     print('Finish')
-
+    '''
     
