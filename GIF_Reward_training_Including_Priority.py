@@ -428,8 +428,8 @@ def GIF_Path(Path, num, final_time, SAVE_PATH, agent2_goal):
     plt.text(Path[item]['Px']-0.2, Path[item]['Py'], str(round(i*deltaT,1)), bbox=dict(color='blue', alpha=0.5))
     plt.text(Path[item]['Px2']-0.2, Path[item]['Py2'], str(round(i*deltaT,1)), bbox=dict(color='red', alpha=0.5))
     
-    
-    plt.savefig(SAVE_PATH +'/' + str(num) +'.png')
+    Snum = str(num)
+    plt.savefig(SAVE_PATH +'/' + Snum.zfill('4') +'.png')
     #plt.show()
     
     return
