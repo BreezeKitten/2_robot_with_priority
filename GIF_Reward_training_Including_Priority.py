@@ -9,6 +9,7 @@ import copy
 import file_manger
 import state_load as SL
 import os
+import time as TIME
 
 
 tf.reset_default_graph()
@@ -429,7 +430,7 @@ def GIF_Path(Path, num, final_time, SAVE_PATH, agent2_goal):
     plt.text(Path[item]['Px2']-0.2, Path[item]['Py2'], str(round(i*deltaT,1)), bbox=dict(color='red', alpha=0.5))
     
     Snum = str(num)
-    plt.savefig(SAVE_PATH +'/' + Snum.zfill('4') +'.png')
+    plt.savefig(SAVE_PATH +'/' + Snum.zfill(4) +'.png')
     #plt.show()
     
     return
@@ -485,6 +486,7 @@ def DL_process(DL_database):
         
 def RL_process(eposide_num, epsilon, RL_SAVE_PATH):      
     for eposide in range(eposide_num):
+        TIME.sleep(1)
         NOW = datetime.datetime.now().strftime('%Y%m%d-%H%M%S')
         GIF_path = RL_SAVE_PATH + '/image/' + NOW
         os.makedirs(GIF_path)
