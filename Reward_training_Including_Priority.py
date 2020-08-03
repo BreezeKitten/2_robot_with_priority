@@ -43,18 +43,18 @@ layer4_output_number = 50
 training_eposide_num = 5000
 training_num = 1500 #3000
 test_num = 1
-Network_path = 'Network/gamma09'
+Network_path = 'Network/gamma09_slow'
 Network_file_name = '/test.ckpt'
-Log_path = 'logs/gamma09'
-SOME_TAG = '_Nothing'
+Log_path = 'logs/gamma09_slow'
+SOME_TAG = '_slow'
 DL_database = Log_path + '/relative_record.json'
 
 '''
 Motion Parameter
 '''
 deltaT = 0.1            #unit:s
-V_max = 3               #m/s
-W_max = 2               #rad/s
+V_max = 0.5               #m/s
+W_max = 1               #rad/s
 linear_acc_max = 10     #m/s^2
 angular_acc_max = 7     #rad/s^2
 size_min = 0.1          #unit:m
@@ -62,7 +62,7 @@ x_upper_bound = 5       #unit:m
 x_lower_bound = -5      #unit:m
 y_upper_bound = 5       #unit:m
 y_lower_bound = -5      #unit:m
-TIME_OUT_FACTOR = 3 #2 #3
+TIME_OUT_FACTOR = 4 #2 #3
 
 
 agnet2_motion = 'Greedy'
