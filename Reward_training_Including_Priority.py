@@ -43,18 +43,18 @@ layer4_output_number = 50
 training_eposide_num = 5000
 training_num = 1500 #3000
 test_num = 1
-Network_path = 'Network/gamma09_slow'
+Network_path = 'Network/gamma09_bP'
 Network_file_name = '/test.ckpt'
-Log_path = 'logs/gamma09_slow'
-SOME_TAG = '_slow'
+Log_path = 'logs/gamma09_bP'
+SOME_TAG = '_beforePaper'
 DL_database = Log_path + '/relative_record.json'
 
 '''
 Motion Parameter
 '''
 deltaT = 0.1            #unit:s
-V_max = 0.5               #m/s
-W_max = 1               #rad/s
+V_max = 3               #m/s
+W_max = 2             #rad/s
 linear_acc_max = 10     #m/s^2
 angular_acc_max = 7     #rad/s^2
 size_min = 0.1          #unit:m
@@ -62,7 +62,7 @@ x_upper_bound = 5       #unit:m
 x_lower_bound = -5      #unit:m
 y_upper_bound = 5       #unit:m
 y_lower_bound = -5      #unit:m
-TIME_OUT_FACTOR = 4 #2 #3
+TIME_OUT_FACTOR = 6 #4 #2 #3
 
 
 agnet2_motion = 'Greedy'
@@ -240,6 +240,8 @@ def Choose_action(agent1, agent2, epsilon):
                     if action_value > action_value_max:
                         action_value_max = action_value
                         action_pair = [V_pred, W_pred]                    
+            #V_pred = min(action_pair[0],0.5)
+            #W_pred = action_pair[1] * (V_pred/action_pair[0])
             V_pred = action_pair[0]
             W_pred = action_pair[1]
         #print(action_value_max)
@@ -684,14 +686,16 @@ if __name__ == '__main__':
         
         
         FM.Network_copy(Network_path, False)
+        
         if i != 0 and os.path.isfile(LAST_SAVE_PATH + '/training_record/Collision.json'):                        
             print('start Collision test',datetime.datetime.now().strftime('%Y%m%d-%H%M%S'))
             Test_process(LAST_SAVE_PATH + '/training_record/Collision.json', RL_SAVE_PATH, 0.3)
+        '''
         if i != 0 and os.path.isfile(LAST_SAVE_PATH + '/training_record/TimeOut.json'):                        
             print('start TimeOut test',datetime.datetime.now().strftime('%Y%m%d-%H%M%S'))
             Test_process(LAST_SAVE_PATH + '/training_record/TimeOut.json', RL_SAVE_PATH, 0.3)
             Transform_data_to_relative_coordinate(RL_SAVE_PATH +'/TEST_Path.json', DL_database)
-        
+        '''
         print('start RL',datetime.datetime.now().strftime('%Y%m%d-%H%M%S'))
         RL_process(RL_eposide_num, RL_epsilon, RL_SAVE_PATH)
         Transform_data_to_relative_coordinate(RL_SAVE_PATH +'/RL_Path_1.json', DL_database)    

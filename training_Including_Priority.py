@@ -62,7 +62,7 @@ x_upper_bound = 5       #unit:m
 x_lower_bound = -5      #unit:m
 y_upper_bound = 5       #unit:m
 y_lower_bound = -5      #unit:m
-TIME_OUT_FACTOR = 3
+TIME_OUT_FACTOR = 3 #2 #3
 
 
 agnet2_motion = 'Greedy'

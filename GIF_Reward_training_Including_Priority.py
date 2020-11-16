@@ -67,7 +67,7 @@ TIME_OUT_FACTOR = 3 #2 #3
 
 
 agnet2_motion = 'Greedy'
-RL_eposide_num = 100
+RL_eposide_num = 1000
 RL_epsilon = 0
 gamma = 0.9
 
@@ -766,10 +766,10 @@ if __name__ == '__main__':
         
         LAST_SAVE_PATH = SAVE_DIR
         
-        if i%5 == 4:
-            RL_process(100, 0, TEST_SAVE_PATH)
+        #if i%5 == 4:
+            #RL_process(100, 0, TEST_SAVE_PATH)
         
-    RL_process(300, 0, TEST_SAVE_PATH)
+    RL_process(10, 0, TEST_SAVE_PATH)
 
     '''
     # for DL_init
